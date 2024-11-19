@@ -1,112 +1,137 @@
-# Recruitment Management System - README
+# Recruitment Management System (RMS)
 
 ## Overview
-The **Recruitment Management System (RMS)** is a web-based application designed to streamline the hiring process. It helps companies manage the recruitment process, including job posting, candidate applications, interview scheduling, and hiring decisions. This system is designed for HR managers, recruiters, and hiring teams to easily manage candidates through the hiring pipeline.
+The **Recruitment Management System (RMS)** is a PHP-based web application that enables companies to manage the recruitment process effectively. This system allows HR managers, recruiters, and interviewers to post jobs, track candidates, schedule interviews, and handle hiring decisions through an easy-to-use web interface.
 
 ## Features
-1. **Job Posting**: HR managers can post job openings with descriptions, required skills, qualifications, and application deadlines.
-2. **Candidate Management**: View and manage candidate profiles, including personal information, resume uploads, and interview status.
-3. **Application Tracking**: Track the status of each application through various stages such as applied, shortlisted, interviewed, and hired.
-4. **Interview Scheduling**: Schedule interviews with candidates and send automated notifications to both the candidate and the interviewer.
-5. **Reporting**: Generate reports for hiring analytics, including time-to-hire, candidate sources, and recruitment success rates.
-6. **Role-based Access Control**: Different user roles such as Admin, HR Manager, and Recruiter with tailored permissions and functionalities.
+1. **Job Postings**: HR Managers can create, edit, and delete job postings with descriptions, required skills, qualifications, and application deadlines.
+2. **Candidate Applications**: Candidates can apply for jobs by submitting their details and resumes.
+3. **Application Status Tracking**: Track the status of applications through stages like "Applied", "Shortlisted", "Interview Scheduled", and "Hired".
+4. **Interview Scheduling**: Schedule and manage interviews for shortlisted candidates.
+5. **Role-based Access Control**: Different user roles with access restrictions: Admin, HR Manager, Recruiter.
+6. **Reports**: Generate reports on hiring progress, interview status, and other recruitment metrics.
 
 ## Installation
 
 ### Prerequisites
-Before setting up the Recruitment Management System, ensure you have the following installed:
-- Node.js (v14+)
-- NPM or Yarn
-- MongoDB (for database storage) or any other supported database
-- Git (optional, for cloning the repository)
+Ensure that the following software is installed on your system:
+- **PHP** (v7.4+ recommended)
+- **MySQL** or **MariaDB**
+- **Apache** or **Nginx** server (for web hosting)
+- **PHPMyAdmin** (optional, for database management)
 
 ### Steps
 
 1. **Clone the Repository**  
-   Clone the project from the GitHub repository:
+   If you're using Git, you can clone the repository:
    ```bash
    git clone https://github.com/your-username/recruitment-management-system.git
    cd recruitment-management-system
    ```
 
-2. **Install Dependencies**  
-   Install the necessary dependencies using npm or yarn:
-   ```bash
-   npm install
+2. **Set Up the Database**  
+   - Create a new database in MySQL or MariaDB:
+   ```sql
+   CREATE DATABASE rms;
    ```
-   Or, if you're using Yarn:
+   - Import the database schema from the `database.sql` file in the repository:
    ```bash
-   yarn install
+   mysql -u your-username -p rms < database.sql
+   ```
+   - Or use **phpMyAdmin** to import the `database.sql` file.
+
+3. **Configure the Database Connection**  
+   Open the `config.php` file in the root directory and update the database connection details:
+   ```php
+   <?php
+   define('DB_SERVER', 'localhost');
+   define('DB_USERNAME', 'root'); // your MySQL username
+   define('DB_PASSWORD', '');     // your MySQL password
+   define('DB_DATABASE', 'rms');  // the name of your database
+   ?>
    ```
 
-3. **Configure the Database**  
-   Set up your database connection in the `.env` file or a configuration file, depending on your environment.
-   Example:
-   ```env
-   DATABASE_URL=mongodb://localhost:27017/rms
+4. **Configure the SMTP (Optional)**  
+   If you plan to send email notifications (e.g., interview scheduling), configure the SMTP settings in `config.php`:
+   ```php
+   define('SMTP_HOST', 'smtp.example.com');
+   define('SMTP_PORT', '587');
+   define('SMTP_USERNAME', 'your-email@example.com');
+   define('SMTP_PASSWORD', 'your-email-password');
    ```
 
-4. **Run the Application**  
-   Start the server:
+5. **Set Permissions**  
+   Ensure the `uploads` directory (for candidate resumes) has the correct file permissions:
    ```bash
-   npm start
+   chmod -R 755 uploads/
    ```
-   Or, if you're using Yarn:
-   ```bash
-   yarn start
-   ```
-   The application should now be running on `http://localhost:3000` (or the port specified in the `.env` file).
 
-5. **Access the Application**  
-   Open your browser and navigate to `http://localhost:3000` to access the Recruitment Management System.
+6. **Start the Web Server**  
+   If using Apache, make sure the Apache server is running:
+   ```bash
+   sudo systemctl start apache2
+   ```
+
+7. **Access the Application**  
+   Open your browser and navigate to `http://localhost/recruitment-management-system` to access the system.
 
 ### Environment Variables
-The system requires the following environment variables:
-- **DATABASE_URL**: URL for your MongoDB or database instance.
-- **PORT**: (Optional) Port on which the server will run. Default is `3000`.
-- **SESSION_SECRET**: A secret string for session management.
-- **SMTP_SERVER**: (Optional) SMTP configuration for sending email notifications.
+You can also set these values in your `.env` file if you are using any PHP environment management tool.
+- **DB_SERVER**: Database server (e.g., `localhost`)
+- **DB_USERNAME**: Database username
+- **DB_PASSWORD**: Database password
+- **DB_DATABASE**: The name of the database
+- **SMTP_HOST**: SMTP server for email notifications
+- **SMTP_PORT**: SMTP server port
+- **SMTP_USERNAME**: SMTP username
+- **SMTP_PASSWORD**: SMTP password
 
 ## Usage
 
-### User Roles
-1. **Admin**: Full access to all features, including user management and configuration settings.
-2. **HR Manager**: Can manage job postings, view candidates, and make hiring decisions.
-3. **Recruiter**: Can view and filter candidates, schedule interviews, and assist with the hiring process.
+### User Roles and Permissions
+- **Admin**: Has full access to all features, including user management, job postings, and reporting.
+- **HR Manager**: Can manage job postings, view candidate applications, schedule interviews, and make hiring decisions.
+- **Recruiter**: Can view candidate applications and assist in the interview process.
+- **Candidate**: Can apply for jobs, upload resumes, and track the status of their applications.
 
-### Job Posting
-- HR Managers can create, edit, or delete job postings.
-- Job descriptions should include position title, responsibilities, required skills, qualifications, and application deadline.
+### Job Postings
+- HR Managers can create and manage job postings with detailed descriptions, requirements, and deadlines.
+- Candidates can search job postings and apply directly through the system.
 
 ### Candidate Applications
-- Candidates can apply for jobs through the system.
-- Recruiters or HR Managers can view applications, filter by qualifications or skills, and mark candidates as shortlisted or rejected.
+- Candidates can apply by submitting personal details and resumes.
+- HR Managers and Recruiters can review candidate profiles, mark them as shortlisted or rejected, and schedule interviews.
 
 ### Interview Scheduling
-- Recruiters can schedule interviews and automatically notify candidates.
-- The system integrates with popular calendar systems like Google Calendar or Outlook.
+- Recruiters can schedule interviews and send email notifications to candidates.
+- An interview can be scheduled and updated with feedback from interviewers.
 
-## Contributing
-We welcome contributions! Please fork the repository and submit pull requests with any improvements or bug fixes.
-
-### Steps to contribute:
-1. Fork the repository.
-2. Create a new feature branch (`git checkout -b feature-branch`).
-3. Commit your changes (`git commit -am 'Add feature'`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Open a pull request.
+### Reports and Analytics
+- HR Managers and Admins can generate reports on candidate progress, interview outcomes, and hiring metrics.
 
 ## Technologies Used
-- **Frontend**: React.js or Angular (for building the user interface)
-- **Backend**: Node.js with Express.js (for the server-side logic)
-- **Database**: MongoDB (NoSQL database for storing candidate and job-related data)
-- **Authentication**: JWT (JSON Web Tokens) for session management
-- **Email**: Nodemailer for email notifications (optional)
-- **Testing**: Jest for unit testing, Mocha/Chai for integration tests
+- **Frontend**: HTML, CSS, JavaScript (with Bootstrap for responsive design)
+- **Backend**: PHP (for handling the business logic)
+- **Database**: MySQL (to store user information, job postings, candidate applications, etc.)
+- **Email**: PHP `mail()` function or an SMTP provider (e.g., Gmail, SendGrid)
+- **Session Management**: PHP sessions for user authentication
+
+## Contributing
+
+We welcome contributions to this project! To contribute:
+1. Fork the repository.
+2. Create a new feature branch (`git checkout -b feature-branch`).
+3. Make your changes and commit them (`git commit -am 'Add new feature'`).
+4. Push the branch (`git push origin feature-branch`).
+5. Open a pull request with a description of your changes.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-For more information or support, please contact the project maintainers or open an issue on the GitHub repository.
+For more details, issues, or feature requests, please feel free to open an issue on the GitHub repository.
+
+---
+
+This is a basic outline for setting up and using a **Recruitment Management System** built with **PHP** and **MySQL**. You can expand this further based on your application's complexity, like integrating advanced user authentication, notification systems, or enhancing UI/UX with JavaScript frameworks like React or Vue.js.
