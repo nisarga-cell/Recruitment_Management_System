@@ -16,8 +16,8 @@ The **Recruitment Management System (RMS)** is a PHP-based web application that 
 ### Prerequisites
 Ensure that the following software is installed on your system:
 - **PHP** (v7.4+ recommended)
-- **MySQL** or **MariaDB**
-- **Apache** or **Nginx** server (for web hosting)
+- **MySQL** 
+- **Apache**  server (for web hosting)
 - **PHPMyAdmin** (optional, for database management)
 
 ### Steps
@@ -113,17 +113,6 @@ You can also set these values in your `.env` file if you are using any PHP envir
 - **Frontend**: HTML, CSS, JavaScript (with Bootstrap for responsive design)
 - **Backend**: PHP (for handling the business logic)
 - **Database**: MySQL (to store user information, job postings, candidate applications, etc.)
-- **Email**: PHP `mail()` function or an SMTP provider (e.g., Gmail, SendGrid)
-- **Session Management**: PHP sessions for user authentication
-
-## Contributing
-
-We welcome contributions to this project! To contribute:
-1. Fork the repository.
-2. Create a new feature branch (`git checkout -b feature-branch`).
-3. Make your changes and commit them (`git commit -am 'Add new feature'`).
-4. Push the branch (`git push origin feature-branch`).
-5. Open a pull request with a description of your changes.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
