@@ -113,8 +113,7 @@ You can also set these values in your `.env` file if you are using any PHP envir
 - **Frontend**: HTML, CSS, JavaScript (with Bootstrap for responsive design)
 - **Backend**: PHP (for handling the business logic)
 - **Database**: MySQL (to store user information, job postings, candidate applications, etc.)
-##Output
-![image](https://github.com/user-attachments/assets/f9480760-a7cb-4865-846c-1b6a742e43ae)
+
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
