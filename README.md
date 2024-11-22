@@ -118,12 +118,11 @@ You can also set these values in your `.env` file if you are using any PHP envir
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
-
-For more details, issues, or feature requests, please feel free to open an issue on the GitHub repository.
+---![Screenshot 2024-11-22 221722](https://github.com/user-attachments/assets/2633499a-2727-4aa2-9e82-e6a007896110)
 
 ---
 ![Screenshot 2024-11-22 221623](https://github.com/user-attachments/assets/57992ff4-fd6a-4f9a-bafa-662ddd00f64f)
-
+![Screenshot 2024-11-22 221702](https://github.com/user-attachments/assets/456718b4-f122-4680-992d-c31a11adeef4)
+For more details, issues, or feature requests, please feel free to open an issue on the GitHub repository.
 
 This is a basic outline for setting up and using a **Recruitment Management System** built with **PHP** and **MySQL**. You can expand this further based on your application's complexity, like integrating advanced user authentication, notification systems, or enhancing UI/UX with JavaScript frameworks like React or Vue.js.
