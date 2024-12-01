@@ -118,6 +118,8 @@ You can also set these values in your `.env` file if you are using any PHP envir
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+Output:
+
 ![Screenshot 2024-11-22 221623](https://github.com/user-attachments/assets/57992ff4-fd6a-4f9a-bafa-662ddd00f64f)
 ---![Screenshot 2024-11-22 221722](https://github.com/user-attachments/assets/2633499a-2727-4aa2-9e82-e6a007896110)
 
